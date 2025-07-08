@@ -1,0 +1,13 @@
+.Caixas{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+body {
+    background-color: #161a32;
+    font-family: Arial, sans-serif;
+}
