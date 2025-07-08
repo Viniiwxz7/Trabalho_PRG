@@ -15,28 +15,87 @@
         <p class="Title">Trabalho de programação abaixo</p>
 
         <div class="Caixas">
-            <label>Digite o seu nome completo</label>
-            <input type="text" placeholder="Nome completo" />
+            <label for="nome">Digite o seu nome completo</label>
+            <input type="text" id="nome" placeholder="Nome completo" />
 
-            <label>Digite sua idade</label>
-            <input type="number" placeholder="Idade" />
+            <label for="idade">Digite sua idade</label>
+            <input type="number" id="idade" placeholder="Idade" />
 
-            <label>Digite o seu sexo (M/F)</label>
-            <input type="text" placeholder="Sexo" />
+            <label for="sexo">Digite o seu sexo (M/F)</label>
+            <input type="text" id="sexo" placeholder="Sexo" />
 
-            <label>Digite sua cidade e estado</label>
-            <input type="text" placeholder="Cidade / Estado" />
+            <label for="cidade">Digite sua cidade e estado</label>
+            <input type="text" id="cidade" placeholder="Cidade / Estado" />
 
-            <label>Digite o nome da sua escola</label>
-            <input type="text" placeholder="Nome da escola" />
+            <label for="escola">Digite o nome da sua escola</label>
+            <input type="text" id="escola" placeholder="Nome da escola" />
 
-            <label>Digite sua série</label>
-            <input type="text" placeholder="Série" />
+            <label for="serie">Digite sua série</label>
+            <input type="text" id="serie" placeholder="Série" />
 
-            <label>Digite o seu turno</label>
-            <input type="text" placeholder="Turno (Manhã/Tarde/Noite)" />
+            <label for="turno">Digite o seu turno</label>
+            <input type="text" id="turno" placeholder="Turno (Manhã/Tarde/Noite)" />
+
+            <br><br>
+            <button onclick="mostrarDados()" class="Butao">Enviar Dados</button>
         </div>
+
+        <div id="resultado" style="margin-top: 20px;"></div>
     </div>
+
+    <script>
+        function mostrarDados() {
+            // Captura dos valores
+            const nome = document.getElementById("nome").value.trim();
+            const idade = parseInt(document.getElementById("idade").value);
+            const sexo = document.getElementById("sexo").value.trim().toUpperCase();
+            const cidade = document.getElementById("cidade").value.trim();
+            const escola = document.getElementById("escola").value.trim();
+            const serie = document.getElementById("serie").value.trim();
+            const turno = document.getElementById("turno").value.trim().toLowerCase();
+
+            let mensagens = [];
+
+            // ✅ Validações
+            if (nome === "") {
+                mensagens.push("Erro: O nome não pode estar vazio.");
+            }
+
+            if (isNaN(idade) || idade < 5 || idade > 100) {
+                mensagens.push("Erro: A idade deve estar entre 5 e 100.");
+            }
+
+            if (sexo !== "M" && sexo !== "F") {
+                mensagens.push("Aviso: Sexo deve ser 'M' ou 'F'.");
+            }
+
+            if (serie !== "1" && serie !== "2" && serie !== "3") {
+                mensagens.push("Aviso: Série deve ser 1, 2 ou 3.");
+            }
+
+            // Se houver mensagens de erro/aviso, exibir e parar
+            if (mensagens.length > 0) {
+                document.getElementById("resultado").innerHTML = mensagens.join("<br>");
+                return;
+            }
+
+            // ✅ Mensagem principal
+            let resultado = `Seja bem-vindo(a) <strong>${nome}</strong> à escola <strong>${escola}</strong>, na série <strong>${serie}</strong> no turno da <strong>${turno}</strong>.`;
+
+            // ✅ Mensagens extras
+            if (idade < 18) {
+                resultado += `<br><br><em>Lembre-se: por ser menor de idade, precisamos da presença do responsável.</em>`;
+            }
+
+            if (turno === "noite") {
+                resultado += `<br><br><em>No turno da noite, os ônibus encerram às 22h, segundo determinação do estado.</em>`;
+            }
+
+            // Exibir resultado final
+            document.getElementById("resultado").innerHTML = resultado;
+        }
+    </script>
+
 
 </body>
 
