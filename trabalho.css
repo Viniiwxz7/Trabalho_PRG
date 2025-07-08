@@ -49,3 +49,21 @@ body {
     background-color: #3a3d65;
     box-shadow: 0 0 5px #9900ff;
 }
+
+.Butao {
+    padding: 12px 15px;
+    font-size: 16px;
+    border: none;
+    border-radius: 8px;
+    background-color: #2a2d45;
+    color: #fff;
+    width: 100%;
+    box-sizing: border-box;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.Butao:hover {
+    background-color: #3a3d65;
+    box-shadow: 0 0 5px #9900ff;
+}
